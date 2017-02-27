@@ -18,7 +18,7 @@ var NoCurrentMovie = require('./components/NoCurrentMovie')
 var SortBar = require('./components/SortBar')
 
 // There should really be some JSON-formatted data in movies.json, instead of an empty array.
-// I started writing this command to extract the data from the learn-sql workspace 
+// I started writing this command to extract the data from the learn-sql workspace
 // on C9, but it's not done yet :) You must have the csvtojson command installed on your
 // C9 workspace for this to work.
 // npm install -g csvtojson
@@ -57,9 +57,27 @@ var App = React.createClass({
     // sorted A-Z), or "map" (the data visualized)
     // We should probably do the sorting and setting of movies in state here.
     // You should really look at https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-    this.setState({
-      currentView: view
-    })
+      if(view == 'latest')
+      {this.setState({
+        currentView: view,
+        movies: movieData.sort(this.movieCompareByReleased)
+      })
+      }
+
+      if(view == 'alpha')
+      {this.setState({
+          currentView: view,
+          movies: movieData.sort(this.movieCompareByTitle)
+      })
+      }
+
+      else
+      {this.setState({
+          currentView: view,
+      })
+      }
+
+
   },
   renderMovieDetails: function() {
     if (this.state.currentMovie == null) {

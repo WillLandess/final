@@ -27,8 +27,8 @@ var SortBar = require('./components/SortBar')
 // Firebase configuration
 var Rebase = require('re-base')
 var base = Rebase.createClass({
-  apiKey: "...",   // replace with your Firebase application's API key
-  databaseURL: "...", // replace with your Firebase application's database URL
+  apiKey: "AIzaSyByuws3vGt3Ddju-acYwUoA5YW5EFH4vDU",   // replace with your Firebase application's API key
+  databaseURL: "https://final-9c63b.firebaseio.com/", // replace with your Firebase application's database URL
 })
 
 var App = React.createClass({
@@ -131,7 +131,7 @@ var App = React.createClass({
   componentDidMount: function() {
     // We'll need to enter our Firebase configuration at the top of this file and
     // un-comment this to make the Firebase database work
-    // base.syncState('/movies', { context: this, state: 'movies', asArray: true })
+     //base.syncState('/movies', { context: this, state: 'movies', asArray: true })
   },
   render: function() {
     return (

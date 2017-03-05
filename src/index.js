@@ -90,9 +90,19 @@ var App = React.createClass({
   renderMainSection: function() {
     if (this.state.currentView === 'map') {
       return (
-        <div className="col-sm-12">
-          <h3>This would be an awfully good place to put a map.</h3>
-        </div>
+        <div className="map col-sm-12">
+        <Gmaps width={'100%'}
+               height={'480px'}
+               lat={'41.9021988'}
+               lng={'-87.6285782'}
+               zoom={11}
+               loadingMessage={'Theatres soon...'}
+               params={{v: '3.exp', key: 'AIzaSyB3p_xQIXsFMDGLYNEiVkgW5fsVSUOd01c'}}>
+               {theatres.map(function(place) {
+                 return <Marker lat={place.lat} lng={place.long} />
+               })}
+        </Gmaps>
+      </div>
       )
     } else {
       return (
